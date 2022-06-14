@@ -25,8 +25,19 @@ btnNumber.forEach((item) => {
         display.value += e.target.value;
     })
 });
+btnNumber.forEach((item) => {
+    item.addEventListener('keypress', (e) => {
+        display.value += e.target.value;
+    })
+});
 
 btnPoint.addEventListener('click', (e) => {
+    if (setPoint == false) {
+        display.value += ".";
+        setPoint = true;
+    }
+});
+btnPoint.addEventListener('keypress', (e) => {
     if (setPoint == false) {
         display.value += ".";
         setPoint = true;
@@ -38,8 +49,18 @@ btnPlus.addEventListener('click', (e) => {
     display.value = "";
     op = "+";
 });
+btnPlus.addEventListener('keypress', (e) => {
+    number1 = Number(display.value);
+    display.value = "";
+    op = "+";
+});
 
 btnMinus.addEventListener('click', (e) => {
+    number1 = Number(display.value);
+    display.value = "";
+    op = "-";
+});
+btnMinus.addEventListener('keypress', (e) => {
     number1 = Number(display.value);
     display.value = "";
     op = "-";
@@ -50,14 +71,44 @@ btnMul.addEventListener('click', (e) => {
     display.value = "";
     op = "*";
 });
+btnMul.addEventListener('keypress', (e) => {
+    number1 = Number(display.value);
+    display.value = "";
+    op = "*";
+});
 
 btnDiv.addEventListener('click', (e) => {
     number1 = Number(display.value);
     display.value = "";
     op = "/";
 });
+btnDiv.addEventListener('keypress', (e) => {
+    number1 = Number(display.value);
+    display.value = "";
+    op = "/";
+});
 
 btnEquls.addEventListener('click', (e) => {
+    number2 = Number(display.value);
+
+    switch (op) {
+        case "+":
+            result = number1 + number2;
+            break;
+        case "-":
+            result = number1 - number2;
+            break;
+        case "*":
+            result = number1 * number2;
+            break;
+        case "/":
+            result = number1 / number2;
+            break;
+    }
+    display.value=result;
+
+})
+btnEquls.addEventListener('keypress', (e) => {
     number2 = Number(display.value);
 
     switch (op) {
